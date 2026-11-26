@@ -1,7 +1,6 @@
-// Easy-to-customize cafe configuration (great for selling to clients!)
 const CAFE_CONFIG = {
-  name: "Roast & Hearth",
-  whatsappNumber: "919876543210", // Client's WhatsApp number without '+'
+  name: "KŌBŌ",
+  whatsappNumber: "919876543210",
   currency: "₹",
   gstRate: 0.05,
 };
@@ -9,90 +8,82 @@ const CAFE_CONFIG = {
 const MENU_ITEMS = [
   {
     id: 1,
-    name: "Single-Origin Pour Over",
+    name: "V60 Pour Over — Ratnagiri Estate",
     category: "coffee",
-    price: 220,
+    price: 240,
     veg: true,
-    tag: "Bestseller",
-    desc: "Chikmagalur estate beans brewed to order with notes of dark cocoa and roasted almond.",
-    img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80",
+    note: "Washed • Bergamot, Dark Cocoa",
+    img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 2,
-    name: "Iced Hazelnut Latte",
+    name: "Iced Hazelnut Cortado",
     category: "coffee",
     price: 260,
     veg: true,
-    tag: "Popular",
-    desc: "Double-shot espresso shaken with house-made roasted hazelnut praline and oat milk.",
-    img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80",
+    note: "Double Ristretto • House Praline",
+    img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 3,
-    name: "Avocado Sourdough Tartine",
+    name: "Avocado & Whipped Feta Tartine",
     category: "breakfast",
-    price: 380,
+    price: 390,
     veg: true,
-    tag: "Chef's Pick",
-    desc: "Smashed Hass avocado, whipped feta, chili crisp, and microgreens on toasted sourdough.",
-    img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=80",
+    note: "48h Sourdough • Chili Crisp",
+    img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 4,
-    name: "Truffle Scrambled Eggs & Brioche",
+    name: "Truffle Folded Eggs on Brioche",
     category: "breakfast",
-    price: 410,
+    price: 420,
     veg: false,
-    tag: "Morning Favorite",
-    desc: "Soft-folded free-range eggs, black truffle butter, and chives on warm brioche.",
-    img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=700&q=80",
+    note: "Free-Range Eggs • Chives",
+    img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 5,
-    name: "Wood-Fired Margherita Pizza",
+    name: "Wood-Fired Margherita",
     category: "mains",
-    price: 490,
+    price: 510,
     veg: true,
-    tag: "Bestseller",
-    desc: "48-hour fermented dough, San Marzano tomato sauce, fresh buffalo mozzarella, and basil.",
-    img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&q=80",
+    note: "San Marzano • Buffalo Mozzarella",
+    img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 6,
-    name: "Herb-Grilled Chicken Bowl",
+    name: "Charred Rosemary Chicken Bowl",
     category: "mains",
-    price: 540,
+    price: 560,
     veg: false,
-    tag: "High Protein",
-    desc: "Charred rosemary chicken, herbed quinoa, roasted peppers, and lemon tahini dressing.",
-    img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80",
+    note: "Herbed Quinoa • Lemon Tahini",
+    img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 7,
     name: "Burnt Basque Cheesecake",
     category: "desserts",
-    price: 340,
+    price: 350,
     veg: true,
-    tag: "Signature",
-    desc: "Caramelized crust with a velvety, custard-like center served with berry compote.",
-    img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80",
+    note: "Madagascar Vanilla • Berry Compote",
+    img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 8,
-    name: "Dark Chocolate Sea Salt Tart",
+    name: "70% Dark Chocolate Sea Salt Tart",
     category: "desserts",
-    price: 310,
+    price: 320,
     veg: true,
-    tag: "Vegan",
-    desc: "70% Belgian dark chocolate ganache in a crisp almond-cocoa shell.",
-    img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80",
+    note: "Vegan • Almond Cocoa Shell",
+    img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80",
   },
 ];
 
 let activeCategory = "all";
 let vegOnly = false;
 let searchQuery = "";
-let selectedTime = "10:00 AM";
+let selectedTime = "09:30";
 const cart = new Map();
 
 const menuGrid = document.getElementById("menuGrid");
@@ -105,10 +96,10 @@ const cartDrawer = document.getElementById("cartDrawer");
 const cartBackdrop = document.getElementById("cartBackdrop");
 const toastEl = document.getElementById("toast");
 
-function showToast(message) {
-  toastEl.textContent = message;
+function showToast(msg) {
+  toastEl.textContent = msg;
   toastEl.classList.add("show");
-  setTimeout(() => toastEl.classList.remove("show"), 2600);
+  setTimeout(() => toastEl.classList.remove("show"), 2400);
 }
 
 function renderMenu() {
@@ -117,30 +108,31 @@ function renderMenu() {
     const matchVeg = !vegOnly || item.veg;
     const matchSearch =
       item.name.toLowerCase().includes(searchQuery) ||
-      item.desc.toLowerCase().includes(searchQuery);
+      item.note.toLowerCase().includes(searchQuery);
     return matchCategory && matchVeg && matchSearch;
   });
 
   if (filtered.length === 0) {
-    menuGrid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--muted);">No dishes match your filter. Try clearing the search.</p>`;
+    menuGrid.innerHTML = `<div style="grid-column:1/-1;padding:48px;text-align:center;color:var(--muted);">No items match your filter.</div>`;
     return;
   }
 
   menuGrid.innerHTML = filtered
     .map(
       (item) => `
-      <article class="menu-card">
-        <img class="menu-img" src="${item.img}" alt="${item.name}" loading="lazy" />
-        <div class="menu-body">
-          <div class="menu-meta">
-            <span class="diet-badge ${item.veg ? "" : "nonveg"}">${item.veg ? "● VEG" : "▲ NON-VEG"}</span>
-            <span>${item.tag}</span>
+      <article class="menu-row">
+        <img class="menu-thumb" src="${item.img}" alt="${item.name}" loading="lazy" />
+        <div class="menu-info">
+          <div>
+            <div class="menu-head">
+              <h3>${item.name}</h3>
+              <span class="menu-price">${CAFE_CONFIG.currency}${item.price}</span>
+            </div>
+            <p class="menu-desc">${item.note}</p>
           </div>
-          <h3 class="menu-title">${item.name}</h3>
-          <p class="menu-desc">${item.desc}</p>
-          <div class="menu-footer">
-            <span class="price">${CAFE_CONFIG.currency}${item.price}</span>
-            <button class="btn btn-outline btn-sm" onclick="addToCart(${item.id})">+ Add</button>
+          <div class="menu-foot">
+            <span class="diet-tag ${item.veg ? "" : "nonveg"}">${item.veg ? "VEG" : "NON-VEG"}</span>
+            <button class="add-btn" onclick="addToCart(${item.id})">Add to Bag</button>
           </div>
         </div>
       </article>
@@ -155,18 +147,15 @@ function addToCart(id) {
   const existing = cart.get(id);
   cart.set(id, existing ? { ...existing, qty: existing.qty + 1 } : { ...item, qty: 1 });
   updateCartUI();
-  showToast(`Added ${item.name} to your order`);
+  showToast(`Added ${item.name}`);
 }
 
 function changeQty(id, delta) {
   const existing = cart.get(id);
   if (!existing) return;
   const nextQty = existing.qty + delta;
-  if (nextQty <= 0) {
-    cart.delete(id);
-  } else {
-    cart.set(id, { ...existing, qty: nextQty });
-  }
+  if (nextQty <= 0) cart.delete(id);
+  else cart.set(id, { ...existing, qty: nextQty });
   updateCartUI();
 }
 
@@ -175,19 +164,19 @@ function updateCartUI() {
   let subtotal = 0;
 
   if (cart.size === 0) {
-    cartItemsEl.innerHTML = `<p style="color:var(--muted);text-align:center;margin-top:40px;">Your order is empty. Add dishes from the menu!</p>`;
+    cartItemsEl.innerHTML = `<p style="color:var(--muted);margin-top:24px;">Your bag is empty.</p>`;
   } else {
     cartItemsEl.innerHTML = Array.from(cart.values())
       .map((item) => {
         totalItems += item.qty;
         subtotal += item.price * item.qty;
         return `
-          <div class="cart-item">
+          <div class="bag-item">
             <div>
-              <strong>${item.name}</strong>
-              <div style="font-size:0.85rem;color:var(--muted);">${CAFE_CONFIG.currency}${item.price} × ${item.qty}</div>
+              <div style="font-weight:500;">${item.name}</div>
+              <div class="mono-label">${CAFE_CONFIG.currency}${item.price} × ${item.qty}</div>
             </div>
-            <div class="qty-controls">
+            <div class="qty-wrap">
               <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
               <span>${item.qty}</span>
               <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
@@ -212,10 +201,9 @@ function toggleCart(open) {
   cartBackdrop.classList.toggle("open", open);
 }
 
-// Event Listeners
 document.getElementById("categoryTabs").addEventListener("click", (e) => {
-  if (!e.target.classList.contains("tab-btn")) return;
-  document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+  if (!e.target.classList.contains("tab")) return;
+  document.querySelectorAll(".tab").forEach((b) => b.classList.remove("active"));
   e.target.classList.add("active");
   activeCategory = e.target.dataset.category;
   renderMenu();
@@ -247,8 +235,8 @@ document.getElementById("menuToggle").addEventListener("click", () => {
 });
 
 document.getElementById("timeSlots").addEventListener("click", (e) => {
-  if (!e.target.classList.contains("slot-btn")) return;
-  document.querySelectorAll(".slot-btn").forEach((b) => b.classList.remove("active"));
+  if (!e.target.classList.contains("slot")) return;
+  document.querySelectorAll(".slot").forEach((b) => b.classList.remove("active"));
   e.target.classList.add("active");
   selectedTime = e.target.dataset.time;
 });
@@ -258,27 +246,35 @@ document.getElementById("reserveForm").addEventListener("submit", (e) => {
   const name = document.getElementById("resName").value.trim();
   const guests = document.getElementById("resGuests").value;
   const date = document.getElementById("resDate").value;
-  showToast(`Table confirmed for ${name} (${guests} guests) on ${date} at ${selectedTime}!`);
+  showToast(`Confirmed: ${name} (${guests} guests) • ${date} at ${selectedTime}`);
   e.target.reset();
 });
 
 document.getElementById("whatsappOrderBtn").addEventListener("click", () => {
   if (cart.size === 0) {
-    showToast("Add at least one item before ordering!");
+    showToast("Add items to your bag first.");
     return;
   }
   const lines = Array.from(cart.values()).map(
     (item) => `• ${item.name} x${item.qty} (${CAFE_CONFIG.currency}${item.price * item.qty})`
   );
-  const total = cartTotalEl.textContent;
   const msg = encodeURIComponent(
-    `Hi ${CAFE_CONFIG.name}! I'd like to place a pickup order:\n\n${lines.join("\n")}\n\nTotal (incl. GST): ${total}`
+    `Hi ${CAFE_CONFIG.name}, pickup order:\n\n${lines.join("\n")}\n\nTotal (incl. GST): ${cartTotalEl.textContent}`
   );
   window.open(`https://wa.me/${CAFE_CONFIG.whatsappNumber}?text=${msg}`, "_blank");
 });
 
-// Set default reservation date to today
-document.getElementById("resDate").valueAsDate = new Date();
+// Scroll reveal
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  },
+  { threshold: 0.12 }
+);
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+document.getElementById("resDate").valueAsDate = new Date();
 renderMenu();
 updateCartUI();
