@@ -8,12 +8,12 @@ const CAFE_CONFIG = {
 const MENU_ITEMS = [
   {
     id: 1,
-    name: "V60 Pour Over — Ratnagiri Estate",
+    name: "V60 Pour Over",
     category: "coffee",
     price: 240,
     veg: true,
-    note: "Washed • Bergamot, Dark Cocoa",
-    img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80",
+    note: "Ratnagiri Estate • Bergamot, Dark Cocoa",
+    img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 2,
@@ -22,25 +22,25 @@ const MENU_ITEMS = [
     price: 260,
     veg: true,
     note: "Double Ristretto • House Praline",
-    img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 3,
-    name: "Avocado & Whipped Feta Tartine",
+    name: "Avocado Sourdough Tartine",
     category: "breakfast",
     price: 390,
     veg: true,
-    note: "48h Sourdough • Chili Crisp",
-    img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80",
+    note: "48h Sourdough • Whipped Feta, Chili Crisp",
+    img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 4,
-    name: "Truffle Folded Eggs on Brioche",
+    name: "Truffle Folded Eggs",
     category: "breakfast",
     price: 420,
     veg: false,
-    note: "Free-Range Eggs • Chives",
-    img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=80",
+    note: "Toasted Brioche • Chives, Black Truffle",
+    img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 5,
@@ -49,16 +49,16 @@ const MENU_ITEMS = [
     price: 510,
     veg: true,
     note: "San Marzano • Buffalo Mozzarella",
-    img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 6,
-    name: "Charred Rosemary Chicken Bowl",
+    name: "Rosemary Chicken Bowl",
     category: "mains",
     price: 560,
     veg: false,
     note: "Herbed Quinoa • Lemon Tahini",
-    img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 7,
@@ -67,16 +67,16 @@ const MENU_ITEMS = [
     price: 350,
     veg: true,
     note: "Madagascar Vanilla • Berry Compote",
-    img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 8,
-    name: "70% Dark Chocolate Sea Salt Tart",
+    name: "Dark Chocolate Tart",
     category: "desserts",
     price: 320,
     veg: true,
-    note: "Vegan • Almond Cocoa Shell",
-    img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80",
+    note: "70% Belgian Cocoa • Sea Salt",
+    img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
   },
 ];
 
@@ -99,7 +99,7 @@ const toastEl = document.getElementById("toast");
 function showToast(msg) {
   toastEl.textContent = msg;
   toastEl.classList.add("show");
-  setTimeout(() => toastEl.classList.remove("show"), 2400);
+  setTimeout(() => toastEl.classList.remove("show"), 2200);
 }
 
 function renderMenu() {
@@ -113,26 +113,24 @@ function renderMenu() {
   });
 
   if (filtered.length === 0) {
-    menuGrid.innerHTML = `<div style="grid-column:1/-1;padding:48px;text-align:center;color:var(--muted);">No items match your filter.</div>`;
+    menuGrid.innerHTML = `<p style="grid-column:1/-1;color:var(--muted);padding:32px 0;">No items match your filter.</p>`;
     return;
   }
 
   menuGrid.innerHTML = filtered
     .map(
       (item) => `
-      <article class="menu-row">
-        <img class="menu-thumb" src="${item.img}" alt="${item.name}" loading="lazy" />
-        <div class="menu-info">
-          <div>
-            <div class="menu-head">
-              <h3>${item.name}</h3>
-              <span class="menu-price">${CAFE_CONFIG.currency}${item.price}</span>
-            </div>
-            <p class="menu-desc">${item.note}</p>
+      <article class="card">
+        <img class="card-img" src="${item.img}" alt="${item.name}" loading="lazy" />
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-title">${item.name}</span>
+            <span class="card-price">${CAFE_CONFIG.currency}${item.price}</span>
           </div>
-          <div class="menu-foot">
-            <span class="diet-tag ${item.veg ? "" : "nonveg"}">${item.veg ? "VEG" : "NON-VEG"}</span>
-            <button class="add-btn" onclick="addToCart(${item.id})">Add to Bag</button>
+          <p class="card-note">${item.note}</p>
+          <div class="card-foot">
+            <span class="dot-tag ${item.veg ? "" : "nonveg"}">${item.veg ? "● VEG" : "▲ NON-VEG"}</span>
+            <button class="add-pill" onclick="addToCart(${item.id})">+ Add</button>
           </div>
         </div>
       </article>
@@ -164,7 +162,7 @@ function updateCartUI() {
   let subtotal = 0;
 
   if (cart.size === 0) {
-    cartItemsEl.innerHTML = `<p style="color:var(--muted);margin-top:24px;">Your bag is empty.</p>`;
+    cartItemsEl.innerHTML = `<p style="color:var(--muted);margin-top:20px;">Your bag is empty.</p>`;
   } else {
     cartItemsEl.innerHTML = Array.from(cart.values())
       .map((item) => {
@@ -173,12 +171,12 @@ function updateCartUI() {
         return `
           <div class="bag-item">
             <div>
-              <div style="font-weight:500;">${item.name}</div>
-              <div class="mono-label">${CAFE_CONFIG.currency}${item.price} × ${item.qty}</div>
+              <div style="font-weight:500;font-size:0.92rem;">${item.name}</div>
+              <div style="font-size:0.8rem;color:var(--muted);">${CAFE_CONFIG.currency}${item.price} × ${item.qty}</div>
             </div>
             <div class="qty-wrap">
               <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
-              <span>${item.qty}</span>
+              <span style="font-size:0.88rem;">${item.qty}</span>
               <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
             </div>
           </div>
@@ -202,8 +200,8 @@ function toggleCart(open) {
 }
 
 document.getElementById("categoryTabs").addEventListener("click", (e) => {
-  if (!e.target.classList.contains("tab")) return;
-  document.querySelectorAll(".tab").forEach((b) => b.classList.remove("active"));
+  if (!e.target.classList.contains("seg-btn")) return;
+  document.querySelectorAll(".seg-btn").forEach((b) => b.classList.remove("active"));
   e.target.classList.add("active");
   activeCategory = e.target.dataset.category;
   renderMenu();
@@ -235,8 +233,8 @@ document.getElementById("menuToggle").addEventListener("click", () => {
 });
 
 document.getElementById("timeSlots").addEventListener("click", (e) => {
-  if (!e.target.classList.contains("slot")) return;
-  document.querySelectorAll(".slot").forEach((b) => b.classList.remove("active"));
+  if (!e.target.classList.contains("time-pill")) return;
+  document.querySelectorAll(".time-pill").forEach((b) => b.classList.remove("active"));
   e.target.classList.add("active");
   selectedTime = e.target.dataset.time;
 });
@@ -263,17 +261,6 @@ document.getElementById("whatsappOrderBtn").addEventListener("click", () => {
   );
   window.open(`https://wa.me/${CAFE_CONFIG.whatsappNumber}?text=${msg}`, "_blank");
 });
-
-// Scroll reveal
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    });
-  },
-  { threshold: 0.12 }
-);
-document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
 document.getElementById("resDate").valueAsDate = new Date();
 renderMenu();
